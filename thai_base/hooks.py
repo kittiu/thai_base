@@ -6,6 +6,13 @@ app_email = "kittiu@gmail.com"
 app_license = "mit"
 # required_apps = []
 
+# Monkey patching
+# ------------------
+import erpnext.utilities.bulk_transaction
+import thai_base.custom.bulk_transaction
+erpnext.utilities.bulk_transaction.task = thai_base.custom.bulk_transaction.task
+
+
 # Includes in <head>
 # ------------------
 
@@ -63,6 +70,11 @@ app_license = "mit"
 # 	"methods": "thai_base.utils.jinja_methods",
 # 	"filters": "thai_base.utils.jinja_filters"
 # }
+jinja = {
+	"methods": [
+		"thai_base.utils.amount_in_bahttext",
+	],
+}
 
 # Installation
 # ------------
